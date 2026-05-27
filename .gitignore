@@ -1,0 +1,18 @@
+# Credenciales — NUNCA subir al repositorio
+credentials.json
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/      
+
+# Streamlit
+.streamlit/
+
+# OS
+.DS_Store
+Thumbs.db
