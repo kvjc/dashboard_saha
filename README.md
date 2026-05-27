@@ -1,4 +1,4 @@
-# 📊 Dashboard Leads – Jimena
+# 📊 Dashboard Saha
 
 Dashboard en Streamlit que lee en tiempo real el Google Sheet de leads y muestra métricas de conversión.
 
@@ -27,7 +27,7 @@ Abre en el navegador: http://localhost:8501
 git init
 git add app.py requirements.txt .streamlit/config.toml README.md
 # NO añadir credentials.json ni .streamlit/secrets.toml
-git commit -m "Dashboard Leads Jimena"
+git commit -m "Dashboard Saha"
 git remote add origin https://github.com/TU_USUARIO/TU_REPO.git
 git push -u origin main
 ```

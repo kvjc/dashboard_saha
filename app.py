@@ -1,5 +1,5 @@
 """
-Dashboard Leads - Jimena
+Dashboard Saha
 Streamlit app que lee en tiempo real desde Google Sheets y muestra métricas de leads.
 """
 
@@ -20,7 +20,7 @@ import os
 # CONFIGURACIÓN DE PÁGINA
 # ─────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="Dashboard Leads – Jimena",
+    page_title="Dashboard Saha",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -592,7 +592,7 @@ def main():
     with col_title:
         st.markdown("""
         <div class="main-header">
-            <h2 style="margin:0;color:#e8f4fd;font-size:1.5rem;">📊 Dashboard Leads – Jimena</h2>
+            <h2 style="margin:0;color:#e8f4fd;font-size:1.5rem;">📊 Dashboard Saha</h2>
             <p style="margin:4px 0 0 0;color:#6a9abf;font-size:0.85rem;">
                 Google Sheets · Tiempo real · Auto-refresh 5 min
             </p>
