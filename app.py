@@ -33,7 +33,7 @@ SPREADSHEET_ID = "198sxijELnecVOTkvpebar3oFBy7X6FLQ-0cyoVzYuys"
 SHEET_NAME = "Hoja 1"
 REFRESH_INTERVAL_SECONDS = 300  # 5 minutos
 SCOPES = [
-    "https://www.googleapis.com/auth/spreadsheets.readonly",
+    "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.readonly",
 ]
 
@@ -114,14 +114,28 @@ st.markdown("""
 @st.cache_resource(show_spinner=False)
 def get_gspread_client():
     """Crea cliente gspread. Soporta st.secrets (Streamlit Cloud) y credentials.json local."""
+    creds_dict = None
+
     try:
-        # Streamlit Cloud: credenciales en secrets.toml
-        creds_dict = dict(st.secrets["gcp_service_account"])
+        if "gcp_service_account" in st.secrets:
+            creds_dict = dict(st.secrets["gcp_service_account"])
+    except Exception:
+        creds_dict = None
+
+    if creds_dict:
+        if "private_key" in creds_dict:
+            creds_dict["private_key"] = creds_dict["private_key"].replace("\\n", "\n")
         creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
-    except (KeyError, FileNotFoundError):
-        # Local: leer credentials.json
+    else:
         creds_path = os.path.join(os.path.dirname(__file__), "credentials.json")
+        if not os.path.exists(creds_path):
+            raise RuntimeError(
+                "No se encontraron credenciales de Google Sheets. "
+                "En Streamlit Cloud configura el secret [gcp_service_account]; "
+                "en local crea credentials.json en la raíz del proyecto."
+            )
         creds = Credentials.from_service_account_file(creds_path, scopes=SCOPES)
+
     return gspread.authorize(creds)
 
 

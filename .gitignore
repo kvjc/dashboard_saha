@@ -1,5 +1,9 @@
 # Credenciales — NUNCA subir al repositorio
 credentials.json
+credential.json
+credencia.json
+dashboardsaha-*.json
+*service_account*.json
 .streamlit/secrets.toml
 
 # Python
